@@ -75,8 +75,4 @@ La principal aportación es de ingeniería: trazabilidad, reproducibilidad acota
 
 La incidencia de N1 mostró un defecto concreto de observabilidad: registrar solo el tipo de excepción pierde el diagnóstico del servidor. La solución segura fue conservar la solicitud y evitar reintentos ciegos, no ocultar el fallo. [Retrospectiva y lecciones](docs/project-retrospective.md).
 
-## Elaboración por roles
-
-El README se preparó con **Desarrollador**, **Diseñador gráfico** y **Evaluador**. Son roles de agentes de IA, no revisores clínicos externos. Solo el Evaluador puede aprobar la versión final; su dictamen se vincula al SHA256 exacto del README en [el registro de revisión](docs/roles.md).
-
 **Licencia:** [Apache-2.0](LICENSE), respetando [atribuciones y exclusiones](THIRD_PARTY_NOTICES.md). Uso de investigación; no tomar decisiones clínicas con este proyecto.
