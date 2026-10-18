@@ -1,10 +1,10 @@
-# ModeloRodillas
+# RSNA Knee Abnormality Detection
 
 ### Aprender a mirar, construir y aceptar los límites
 
 Detrás de una resonancia de rodilla hay una persona. Aquí trabajamos con imágenes, código y números, pero el contexto de salud merece estar presente desde el principio: reconocer un patrón en una competición es solo una pequeña parte del camino hacia algo que pueda ayudar a alguien.
 
-ModeloRodillas reúne el trabajo realizado para explorar la detección de doce hallazgos en resonancias de rodilla, dentro de una competición de Kaggle. Este repositorio cuenta ese recorrido: lo que se consiguió construir, lo que se torció y las lecciones que quedan después de cerrar una entrega.
+RSNA Knee Abnormality Detection reúne el trabajo realizado para explorar la detección de doce hallazgos en resonancias de rodilla, dentro de una competición de Kaggle. Este repositorio cuenta ese recorrido: lo que se consiguió construir, lo que se torció y las lecciones que quedan después de cerrar una entrega.
 
 ## Un camino de pruebas y decisiones
 
