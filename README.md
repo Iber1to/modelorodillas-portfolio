@@ -1,49 +1,44 @@
 # ModeloRodillas
 
-### Clasificación experimental de 12 hallazgos en resonancias de rodilla
+### Aprender a mirar, construir y aceptar los límites
 
-Proyecto de portafolio sobre visión médica, inferencia DICOM y reproducibilidad. **Una entrega aceptada no equivale a un modelo clínicamente validado ni a un resultado competitivo de primer nivel.** Esta edición pública reúne código representativo y pruebas sintéticas y una valoración personal; no distribuye datos ni pesos.
+Detrás de una resonancia de rodilla hay una persona. Aquí trabajamos con imágenes, código y números, pero el contexto de salud merece estar presente desde el principio: reconocer un patrón en una competición es solo una pequeña parte del camino hacia algo que pueda ayudar a alguien.
 
-![Pipeline conceptual: DICOM y metadatos pasan por preprocesado, CoAtNet de cinco folds y agregación por rangos para doce hallazgos.](docs/assets/pipeline.svg)
+ModeloRodillas reúne el trabajo realizado para explorar la detección de doce hallazgos en resonancias de rodilla, dentro de una competición de Kaggle. Este repositorio cuenta ese recorrido: lo que se consiguió construir, lo que se torció y las lecciones que quedan después de cerrar una entrega.
 
-## Qué construimos
+## Un camino de pruebas y decisiones
 
-- Una plantilla de inferencia de cinco folds CoAtNet: lectura DICOM, selección de ventanas, preprocesado y clasificación multilabel.
-- Agregación mediante rangos por etiqueta sobre la población completa, con tratamiento explícito de empates.
-- Diagnósticos de invariancia y cotas matemáticas comprobados con datos sintéticos.
-- Una campaña privada con versiones congeladas, hashes, control de recursos y verificación de salidas.
+El reto parecía concreto: enseñar a un modelo a encontrar señales en imágenes médicas. Llevarlo hasta una entrega exigió mucho más que entrenarlo. Hubo que preparar las imágenes, comparar alternativas, cuidar un presupuesto de cómputo gratuito y comprobar que cada resultado correspondía a la versión que se quería evaluar.
 
-El trabajo combina adaptación de código abierto e ingeniería propia. La procedencia y licencias están en [NOTICE](NOTICE), [atribuciones](THIRD_PARTY_NOTICES.md) y [provenance.json](docs/provenance.json).
+Una parte importante del esfuerzo estuvo en ese trabajo poco visible: volver sobre una comprobación, entender una diferencia, dejar constancia de un fallo. Son tareas que rara vez aparecen en una puntuación, pero que permiten confiar un poco más en lo que se está haciendo.
 
-## Resultado y límites
+El proyecto se apoyó en trabajo abierto de otras personas y añadió desarrollo propio. Las [atribuciones](THIRD_PARTY_NOTICES.md) y la [procedencia del código](docs/provenance.json) recogen esa deuda.
 
-Estado observado el **18 de octubre de 2026**:
+## El resultado, con perspectiva
 
-| Evidencia | Resultado | Interpretación correcta |
-|---|---|---|
-| CoAtNet propio, envío 57319469 | Aceptado en Kaggle y seleccionado explícitamente | No garantiza clasificación privada final ni premio |
-| Puntuación pública del modelo seleccionado | **0,869** | Resultado público, no métrica clínica |
-| Referencia competitiva pública | Líder alrededor de 0,969 | La candidatura propia no estaba cerca de los primeros puestos |
-| Comparación interna común | CoAtNet 0,780478 frente N1 0,704753, sobre 4349 weak O2 | Comparación interna; no prueba superioridad frente a rivales |
-| Evaluación gold | CoAtNet 0,836965 frente N1 0,720249, sobre 58 estudios | Gold pequeño y previamente utilizado en desarrollo |
-| Reproducción desde ZIP | CSV idénticos sobre 3 estudios visibles | No prueba tiempo sobre toda la población oculta |
-| Benchmark operacional | 1500 estudios / 8303 series auditados | Prueba operativa, no validación clínica externa |
+El modelo propio llegó a Kaggle, fue aceptado y quedó seleccionado como entrega final. Su puntuación pública fue **0,869**, frente a un líder que rondaba **0,969** el **18 de octubre de 2026**. Quedó lejos de los primeros puestos.
 
-Fuentes: [competición y envíos](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/submissions), [clasificación pública](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/leaderboard) y resumen de evidencias de la campaña privada en la [model card](docs/model-card.md). La tabla pública usaba aproximadamente 30 % del test y el resultado privado 70 %; las posiciones podían cambiar. Los recibos privados no se publican: estas cifras no son íntegramente reauditables desde este repositorio.
+Después de tanto trabajo, esa distancia también forma parte de la historia. Una entrega que funciona no garantiza el resultado que se esperaba. Aun así, el recorrido deja algo valioso: práctica para construir, criterio para evaluar y una idea más clara de lo que habría que mejorar.
 
-La comparación interna utilizó bootstrap pareado2000. No aísla causalmente la arquitectura; el gold ya había influido en el desarrollo. No afirmamos calibración clínica, validación externa ni eficacia diagnóstica. El mejor score histórico 0,924 de la cuenta procedía de un ancla pública externa y **no se presenta como resultado del modelo propio**.
+También quedó una dificultad sin resolver. Una segunda alternativa, llamada N1, tuvo un error durante el envío y no se pudo confirmar su aceptación. Se conservó el registro y se decidió no repetir la solicitud para evitar duplicados. La entrega final quedó únicamente con CoAtNet.
 
-N1 quedó como incidencia de envío HTTP sin aceptación confirmada. Se conservó la incertidumbre y no se repitió la solicitud para evitar duplicados. No forma parte de la entrega final. Kaggle advertía autoselección con menos de dos plazas; solo se acreditó la selección explícita de CoAtNet en esa fecha.
+Estos resultados describen una competición y sus comprobaciones internas. **El proyecto es experimental y no está validado para tomar decisiones clínicas.** Los detalles y límites están en la [ficha del modelo](docs/model-card.md).
 
-## Arquitectura y decisiones
+## Lo que queda del aprendizaje
 
-La plantilla usa `coatnet_rmlp_2_rw_384.sw_in12k_ft_in1k`, cinco folds y endpoints de época 8. **La resolución efectiva del código exportado es336**: el384 del nombre pertenece al backbone. Se procesan 42 ventanas y se agregan resultados por rangos, sin TTA ni entrenamiento durante inferencia.
+Comparar modelos enseñó a distinguir una mejora interna de una mejora frente a otros equipos. Revisar resultados enseñó que una muestra pequeña puede dar una confianza mayor de la que merece. Y el fallo de N1 dejó una lección concreta: guardar que algo falló no basta; hace falta conservar información útil para entender por qué.
 
-`kaggle/53_coatnet_final_inference/infer_coatnet.py` conserva `CONFIG = {}`. Es una **plantilla técnica**, no un programa de inferencia completo listo para ejecutar: faltan configuración, pesos y datos autorizados. Las fuentes22/36 se incluyen como referencias históricas de las reglas de ranking; no son la selección final ni un producto de fusión entregado.
+Cerrar el proyecto también supuso aceptar hasta dónde llegaba la evidencia. Quedaron preguntas abiertas y líneas de investigación pendientes. Dejarlas escritas permite que quien llegue después entienda tanto las decisiones como sus límites.
 
-## Ejecutar la demostración pública
+La [retrospectiva](docs/project-retrospective.md) desarrolla estos aprendizajes.
 
-Requisitos: Python 3.11 y NumPy. Desde la raíz del repositorio:
+## Explorar el trabajo
+
+Esta edición pública comparte una selección de código, una plantilla del modelo final y **36 pruebas con datos artificiales**. Permite acercarse a algunas de las decisiones del proyecto sin acceder a información privada.
+
+No incluye resonancias, informes, identificadores de pacientes, predicciones, pesos del modelo ni credenciales. La plantilla necesita configuración, datos y pesos autorizados por separado; las pruebas públicas no reproducen el entrenamiento ni la puntuación de Kaggle.
+
+Para ejecutar esas pruebas con Python 3.11:
 
 ```sh
 python -m venv .venv
@@ -53,26 +48,23 @@ python -m pip install -r requirements-demo.txt
 python -B -m unittest tests.test_coatnet_tie_metrics tests.test_coatnet_tie_auc_bound
 ```
 
-Las 36 pruebas son sintéticas: no requieren datos clínicos, pesos, GPU, acceso a Kaggle ni red durante su ejecución. Los diagnósticos extraen únicamente el AST de las funciones de ranking y no ejecutan los scripts completos. Pasar esta suite no acredita reproducción del modelo, de su entrenamiento o de su puntuación pública.
+No requieren GPU ni acceso a Kaggle. El [alcance de reproducción](docs/reproducibility.md) explica qué comprueban y qué queda fuera.
 
-[Alcance exacto de reproducción](docs/reproducibility.md). `requirements-demo.txt` sirve para las pruebas, no es el entorno completo de inferencia.
+<details>
+<summary>Ver el recorrido técnico y las comprobaciones</summary>
 
-## Qué contiene esta edición
+![Esquema del procesamiento: las imágenes y sus metadatos pasan por la preparación, el modelo CoAtNet y la combinación de resultados para doce hallazgos.](docs/assets/pipeline.svg)
 
-```text
-kaggle/        Plantilla final y referencias históricas de ranking
-tools/        Diagnósticos de empates y cotas sintéticas
-tests/        Pruebas sin datos privados
-docs/         Modelo, reproducción, procedencia y retrospectiva
-LICENSE       Apache-2.0, con atribuciones de terceros
-```
+La plantilla final utiliza CoAtNet con cinco particiones de entrenamiento, checkpoints de época 8, resolución efectiva de 336 y 42 ventanas. Combina resultados mediante rangos por hallazgo, sin TTA ni entrenamiento durante la inferencia. El nombre del backbone es `coatnet_rmlp_2_rw_384.sw_in12k_ft_in1k`; el 384 de ese nombre no es la resolución usada. El archivo `kaggle/53_coatnet_final_inference/infer_coatnet.py` conserva `CONFIG = {}`. Las fuentes 22/36 son referencias históricas, no entregas finales ni una fusión entregada.
 
-No contiene DICOM, informes, identificadores reales de estudios, etiquetas individuales, predicciones, checkpoints, credenciales, logs de cuenta ni historial Git privado. No concede derechos sobre los datos o pesos de la competición. Para acceder a ellos hay que cumplir sus condiciones por separado.
+La comparación interna sobre 4349 estudios weak O2 dio 0,780478 para CoAtNet y 0,704753 para N1. En los 58 estudios gold, los valores fueron 0,836965 y 0,720249. Se utilizó bootstrap pareado con 2000 remuestreos. El conjunto gold era pequeño y ya había intervenido en el desarrollo; esta comparación no demuestra superioridad clínica ni aísla el efecto de la arquitectura.
 
-## Aprendizajes
+Las reproducciones desde ZIP generaron archivos idénticos en tres estudios visibles. Un benchmark separado cubrió 1500 estudios y 8303 series. Estas comprobaciones no acreditan el tiempo del conjunto oculto ni la reproducción completa del entrenamiento.
 
-La principal aportación es de ingeniería: trazabilidad, reproducibilidad acotada, límites de validación explícitos y tratamiento seguro de errores. El resultado competitivo fue débil. La mejora frente a un baseline interno no justificaba afirmar que el modelo competiría por premios.
+El envío propio seleccionado fue el **57319469**. El mejor resultado histórico de la cuenta, 0,924, procedía de una referencia pública externa y no corresponde al modelo propio. La clasificación pública usaba aproximadamente el 30 % del test y la privada el 70 % restante; la posición final podía cambiar. Kaggle advertía de selección automática con menos de dos plazas: solo se confirmó la selección explícita de CoAtNet en la fecha indicada.
 
-La incidencia de N1 mostró un defecto concreto de observabilidad: registrar solo el tipo de excepción pierde el diagnóstico del servidor. La solución segura fue conservar la solicitud y evitar reintentos ciegos, no ocultar el fallo. [Retrospectiva y lecciones](docs/project-retrospective.md).
+Fuentes: [competición y envíos](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/submissions), [clasificación pública](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/leaderboard) y [ficha del modelo](docs/model-card.md). Los recibos privados no se publican; las cifras de la campaña son un resumen documental y no pueden comprobarse íntegramente desde este repositorio.
 
-**Licencia:** [Apache-2.0](LICENSE), respetando [atribuciones y exclusiones](THIRD_PARTY_NOTICES.md). Uso de investigación; no tomar decisiones clínicas con este proyecto.
+</details>
+
+**Licencia:** [Apache-2.0](LICENSE), con [atribuciones y exclusiones](THIRD_PARTY_NOTICES.md) y [NOTICE](NOTICE). El acceso a datos y pesos de la competición requiere cumplir sus condiciones por separado.
