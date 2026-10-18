@@ -1,0 +1,7 @@
+ModeloRodillas — portfolio edition
+Original project adaptations and documentation: Iber1to, 2026.
+The inference scripts include adapted DICOM/model code from Dread Development's
+Apache-2.0 Kaggle notebooks. They are adaptations, not original unmodified upstream sources.
+Source: https://www.kaggle.com/code/dreaddevelopment/knee-mri-twelve-findings-from-a-single-model
+Training reference: https://www.kaggle.com/code/dreaddevelopment/knee-mri-training-the-twelve-finding-model
+The Apache-2.0 license is included in LICENSE. No datasets or model weights are distributed.

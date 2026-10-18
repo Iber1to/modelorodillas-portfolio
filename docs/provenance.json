@@ -1,0 +1,35 @@
+{
+  "source": "ModeloRodillas private research workspace; curated public export",
+  "files": [
+    {
+      "path": "kaggle/53_coatnet_final_inference/infer_coatnet.py",
+      "sha256": "3f08f0eecf28b0cf26edbab70940a1b882286f46598d9c12b4ca396d4697d01b"
+    },
+    {
+      "path": "kaggle/36_coatnet_fusion_guarded/infer_fusion_guarded.py",
+      "sha256": "870a6bb82f930feeb3649d99e1cdca30ff264743272af4bd431d13130111b234"
+    },
+    {
+      "path": "kaggle/22_public_coatnet_anchor/infer_public_coatnet.py",
+      "sha256": "8b550c37076612eff8f3421bf0ce076ded61025a348e59b033bce5e9638ff272"
+    },
+    {
+      "path": "tools/coatnet_tie_metrics.py",
+      "sha256": "7d4139a9584258c3d867bfe73404c8de207061597cbef93713eb60090ef01194"
+    },
+    {
+      "path": "tools/coatnet_tie_auc_bound.py",
+      "sha256": "e62ba6f41ce0bce5c44e76d0238faee0d09a9304a14ff3e2dfef693d83b90794"
+    },
+    {
+      "path": "tests/test_coatnet_tie_metrics.py",
+      "sha256": "b42bf8a9818f10a5de44147c8f10ef7da6a11f72e78b905b5c68ea2709786b78"
+    },
+    {
+      "path": "tests/test_coatnet_tie_auc_bound.py",
+      "sha256": "ec6136786979288130079fc4adeaf5337facfb261b57578d5e68abe64c99c0bd"
+    }
+  ],
+  "data_or_weights_included": false,
+  "private_history_included": false
+}

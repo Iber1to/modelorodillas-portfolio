@@ -1,0 +1,25 @@
+{
+  "role": "evaluator",
+  "status": "APPROVED",
+  "reviewed_on": "2026-10-18",
+  "readme_sha256": "acbc7edd8841f384a721bb4011cb6c5c48d1713b8c7fbd57dd74891c9f2e62b9",
+  "scope": "Curated public portfolio export and exact README; no clinical or competitive certification",
+  "criteria": {
+    "scientific_limitations_and_prior_gold_use_disclosed": "PASS",
+    "own_result_distinguished_from_external_anchor": "PASS",
+    "visible_reproduction_not_claimed_as_hidden_test_proof": "PASS",
+    "n1_uncertainty_and_single_selected_submission_disclosed": "PASS",
+    "public_export_excludes_private_data_weights_credentials_and_history": "PASS",
+    "adaptation_attribution_license_and_exclusions_present": "PASS",
+    "seven_exported_source_hashes_match_provenance": "PASS",
+    "relative_links_and_python_ast_parse": "PASS",
+    "synthetic_suite_run_from_export": "36 tests PASS, 0.275 seconds",
+    "diagram_text_and_template_execution_scope_consistent": "PASS"
+  },
+  "limitations": [
+    "Private campaign results are documentary summaries, not fully independently reproducible from this export.",
+    "Inference templates require separately authorized data, weights, configuration and dependencies.",
+    "Review roles are AI agents, not external human or clinical reviewers."
+  ],
+  "change_policy": "Any README byte change invalidates this approval and requires evaluator review again."
+}
