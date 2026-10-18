@@ -2,7 +2,7 @@
   "role": "evaluator",
   "status": "APPROVED",
   "reviewed_on": "2026-10-18",
-  "readme_sha256": "201cdd34f3012bdd377f95b51bc721b3fc6f096cf91fd912417fef3c30e961d6",
+  "readme_sha256": "c5fbe3a7c7d66e69cf2250a82c344ac16ca7a9b11bee78909b3a149a335bfb51",
   "scope": "Editorial reassessment requested by the user: warmer Spanish narrative, factual limits and links. Performed by the same AI agent that edited the text; not an independent review or clinical certification.",
   "criteria": {
     "human_readable_narrative_without_invented_personal_experiences": "PASS",
@@ -11,7 +11,8 @@
     "n1_uncertainty_and_single_confirmed_selection_preserved": "PASS",
     "template_and_synthetic_test_scope_preserved": "PASS",
     "local_markdown_links_and_code_fences": "PASS",
-    "git_diff_whitespace_check": "PASS"
+    "git_diff_whitespace_check": "PASS",
+    "official_competition_name_checked_on_kaggle": "PASS"
   },
   "limitations": [
     "No code changed. Synthetic tests and source provenance audits were not rerun for this editorial revision; earlier results remain historical.",
@@ -20,8 +21,8 @@
     "Evaluation was performed by the editing AI agent, not a separate agent or human reviewer."
   ],
   "supersedes": {
-    "readme_sha256": "acbc7edd8841f384a721bb4011cb6c5c48d1713b8c7fbd57dd74891c9f2e62b9",
-    "reason": "README rewritten at the user's request. The previous approval applies only to its original bytes."
+    "readme_sha256": "201cdd34f3012bdd377f95b51bc721b3fc6f096cf91fd912417fef3c30e961d6",
+    "reason": "User requested only replacing ModeloRodillas with the official English competition name, RSNA Knee Abnormality Detection. Both occurrences changed; all other README bytes preserved."
   },
   "change_policy": "Any README byte change invalidates this approval and requires evaluator review again."
 }
