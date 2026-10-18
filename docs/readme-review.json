@@ -2,8 +2,8 @@
   "role": "evaluator",
   "status": "APPROVED",
   "reviewed_on": "2026-10-18",
-  "readme_sha256": "c5fbe3a7c7d66e69cf2250a82c344ac16ca7a9b11bee78909b3a149a335bfb51",
-  "scope": "Editorial reassessment requested by the user: warmer Spanish narrative, factual limits and links. Performed by the same AI agent that edited the text; not an independent review or clinical certification.",
+  "readme_sha256": "d28fcf947c5accce44a997f4d649b163867bd5c09448c8a4777b1ad8c450d91e",
+  "scope": "Editorial reassessment including profile badges verified through Kaggle UI on 2026-10-18. Performed by the editing AI agent; not an independent review or clinical certification.",
   "criteria": {
     "human_readable_narrative_without_invented_personal_experiences": "PASS",
     "own_result_and_dated_competitive_comparison_preserved": "PASS",
@@ -12,7 +12,8 @@
     "template_and_synthetic_test_scope_preserved": "PASS",
     "local_markdown_links_and_code_fences": "PASS",
     "git_diff_whitespace_check": "PASS",
-    "official_competition_name_checked_on_kaggle": "PASS"
+    "official_competition_name_checked_on_kaggle": "PASS",
+    "profile_badges_names_images_and_individual_certificate_links": "PASS: 13 visible profile badges; not represented as competition medals"
   },
   "limitations": [
     "No code changed. Synthetic tests and source provenance audits were not rerun for this editorial revision; earlier results remain historical.",
@@ -21,8 +22,8 @@
     "Evaluation was performed by the editing AI agent, not a separate agent or human reviewer."
   ],
   "supersedes": {
-    "readme_sha256": "201cdd34f3012bdd377f95b51bc721b3fc6f096cf91fd912417fef3c30e961d6",
-    "reason": "User requested only replacing ModeloRodillas with the official English competition name, RSNA Knee Abnormality Detection. Both occurrences changed; all other README bytes preserved."
+    "readme_sha256": "c5fbe3a7c7d66e69cf2250a82c344ac16ca7a9b11bee78909b3a149a335bfb51",
+    "reason": "Added the 13 badges visibly listed on the Iber1to Kaggle profile with official image URLs and individually inspected certificate links."
   },
   "change_policy": "Any README byte change invalidates this approval and requires evaluator review again."
 }
