@@ -2,7 +2,7 @@
 
 ### Clasificación experimental de 12 hallazgos en resonancias de rodilla
 
-Proyecto de portafolio sobre visión médica, inferencia DICOM y reproducibilidad. **Una entrega aceptada no equivale a un modelo clínicamente validado ni a un resultado competitivo de primer nivel.** Esta edición pública reúne código representativo, pruebas sintéticas y una retrospectiva honesta; no distribuye datos ni pesos.
+Proyecto de portafolio sobre visión médica, inferencia DICOM y reproducibilidad. **Una entrega aceptada no equivale a un modelo clínicamente validado ni a un resultado competitivo de primer nivel.** Esta edición pública reúne código representativo y pruebas sintéticas y una valoración personal; no distribuye datos ni pesos.
 
 ![Pipeline conceptual: DICOM y metadatos pasan por preprocesado, CoAtNet de cinco folds y agregación por rangos para doce hallazgos.](docs/assets/pipeline.svg)
 
